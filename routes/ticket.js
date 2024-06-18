@@ -31,18 +31,9 @@ router.post('/', async function(req, res, next) {
 
 router.put('/', async function(req, res, next) {
   try {
-    res.json(await userData.update(req.query.id, req.body));
+    res.json(await tickets.update(req.query.id, req.body));
   } catch (err) {
     console.error(`Error while updating user `, err.message);
-    next(err);
-  }
-});
-
-router.delete('/', async function(req, res, next) {
-  try {
-    res.json(await userData.remove(req.query.id));
-  } catch (err) {
-    console.error(`Error while deleting user`, err.message);
     next(err);
   }
 });

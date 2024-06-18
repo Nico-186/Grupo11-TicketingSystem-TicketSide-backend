@@ -33,23 +33,9 @@ async function create(ticket){
   return message;
 }
 
-async function update(id, usuario){
+async function update(id, ticket){
   const result = await db.query(
-    `UPDATE grupo11.usuario SET nomusua = '${usuario.username}', Contraseña = '${usuario.password}', rol = ${usuario.role} WHERE ID_usuario = ${id};`
-  );
-
-  let message = 'Error al crear usuario';
-
-  if(result.affectedRows) {
-    message = 'Usuario creado con exito';
-  }
-
-  return message;
-}
-
-async function remove(id){
-  const result = await db.query(
-    `DELETE FROM grupo11.usuario WHERE ID_usuario = ${id};`
+    `UPDATE ticket SET IDencargado = ${ticket.idencargado}, IDstatus = ${ticket.idstatus}, IDprio = ${ticket.idprioridad} WHERE ID_ticket = ${id};`
   );
 
   let message = 'Error al crear usuario';
@@ -65,6 +51,5 @@ module.exports = {
   get,
   getUsernames,
   create,
-  update,
-  remove
+  update
 }
