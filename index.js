@@ -1,12 +1,12 @@
 const express = require("express");
-const app = express()
+const app = express();
+const cors = require("cors");
 
 
 const allTickets = require("./routes/ticket");
 const status = require("./routes/status");
 const priority = require("./routes/priority");
 const login = require("./routes/login");
-
 const comments = require("./routes/comments");
 
 const port = 3000;
@@ -26,5 +26,5 @@ app.use((err, req, res, next) => {
     return;
 });
 
-app.get('/',(req,res)=>res.json({message:'This work'}))
-app.listen(process.env.PORT || 80)
+app.get('/',(req,res)=>res.json({message:'This work'}));
+app.listen(process.env.PORT || port);
