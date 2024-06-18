@@ -1,12 +1,15 @@
 const express = require("express");
+const app = express()
 const cors = require("cors");
+
+
 const allTickets = require("./routes/ticket");
 const status = require("./routes/status");
 const priority = require("./routes/priority");
 const login = require("./routes/login");
+
 const comments = require("./routes/comments");
 
-let app = express();
 const port = 3000;
 
 app.use(cors());
@@ -16,10 +19,6 @@ app.use(
         extended: true,
     })
 );
-
-app.get("/", async (req, res) => {
-    res.json({ message: 'ok' });
-});
 
 app.use("/tickets", allTickets);
 app.use("/status/", status);
@@ -34,6 +33,5 @@ app.use((err, req, res, next) => {
     return;
 });
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-});
+app.get('/',(req,res)=>res.json({message:'This work'}))
+app.listen(process.env.PORT || 80)
