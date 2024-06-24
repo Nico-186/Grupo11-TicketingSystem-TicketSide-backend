@@ -29,7 +29,7 @@ router.put('/', async function (req, res, next) {
   }
 });
 
-router.delete('/', async function (req, res, next) {
+router.put('/delete/', async function (req, res, next) {
   try {
     res.json(await status.remove(req.query.id));
   } catch (err) {
