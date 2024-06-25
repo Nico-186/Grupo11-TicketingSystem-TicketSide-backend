@@ -1,10 +1,10 @@
 const db = require('./db');
 const helper = require('../helper');
 
-async function get(username, password) {
+async function get(user) {
   const conn = await db.connection();
   const rows = await conn.execute(
-    `SELECT * FROM grupo11.usuario WHERE nomusua='${username}' AND Contraseña='${password}';`
+    `SELECT * FROM grupo11.usuario WHERE nomusua='${user.username}' AND Contraseña='${user.password}';`
   );
   const data = helper.emptyOrRows(rows);
   conn.release();
