@@ -14,7 +14,7 @@ async function get(){
 async function getUsernames(){
   const conn = await db.connection();
   const rows = await conn.execute(
-    `SELECT ID_usuario, nomusua, rol FROM grupo11.usuario;`
+    `SELECT ID_usuario, nomusua, rol, Deleted FROM grupo11.usuario;`
   );
   const data = helper.emptyOrRows(rows);
   conn.release();
