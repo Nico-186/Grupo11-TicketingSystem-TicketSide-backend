@@ -4,7 +4,7 @@ const helper = require('../helper');
 async function get(id) {
     const conn = await db.connection();
     const rows = await conn.execute(
-        `SELECT * FROM grupo11.comentarios WHERE IDticket = ${id} AND Deleted = 0 ORDER BY ID_coment DESC;`
+        `SELECT * FROM grupo11.comentarios WHERE IDticket = ${id} AND Deleted = 0;`
     );
     const data = helper.emptyOrRows(rows);
     conn.release();
