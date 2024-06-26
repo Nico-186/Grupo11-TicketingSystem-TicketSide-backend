@@ -31,7 +31,7 @@ router.put('/', async function (req, res, next) {
 
 router.put('/final/', async function (req, res, next) {
   try {
-    res.json(await comments.update(req.query.id));
+    res.json(await comments.removeFinal(req.query.id));
   } catch (err) {
     console.error(`Error al actualizar comentario.\n`, err.message);
     next(err);
