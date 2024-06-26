@@ -40,7 +40,7 @@ async function update(id, comment) {
 async function removeFinal(id) {
     const conn = await db.connection();
     const result = await conn.execute(
-        `UPDATE comentarios SET final = 0 WHERE ID_coment = ${id} AND final = 1;`
+        `UPDATE comentarios SET final = 0 WHERE IDticket = ${id} AND final = 1;`
     );
     let message = 'Error al eliminar comentario final.';
     if (result.affectedRows) {
