@@ -37,6 +37,19 @@ async function update(id, comment) {
     return message;
 }
 
+async function removeFinal(id) {
+    const conn = await db.connection();
+    const result = await conn.execute(
+        `UPDATE comentarios SET final = 0 WHERE ID_coment = ${id} AND final = 1;`
+    );
+    let message = 'Error al eliminar comentario final.';
+    if (result.affectedRows) {
+        message = 'Comentario final eliminar con éxito.';
+    }
+    conn.release();
+    return message;
+}
+
 async function remove(id) {
     const conn = await db.connection();
     const result = await conn.execute(
@@ -54,5 +67,6 @@ module.exports = {
     get,
     create,
     update,
+    removeFinal,
     remove
 }

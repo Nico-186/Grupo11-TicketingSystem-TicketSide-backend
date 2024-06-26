@@ -29,6 +29,15 @@ router.put('/', async function (req, res, next) {
   }
 });
 
+router.put('/final/', async function (req, res, next) {
+  try {
+    res.json(await comments.update(req.query.id));
+  } catch (err) {
+    console.error(`Error al actualizar comentario.\n`, err.message);
+    next(err);
+  }
+});
+
 router.put('/delete/', async function (req, res, next) {
   try {
     res.json(await comments.remove(req.query.id));
